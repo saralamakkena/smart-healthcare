@@ -1,0 +1,33 @@
+version: '3.9'
+
+services:
+  postgres:
+    image: postgres:15
+    container_name: user-postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: smart_health
+      POSTGRES_USER: sh_user
+      POSTGRES_PASSWORD: sh_pass
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  user-service:
+    build: .
+    container_name: user-service
+    restart: unless-stopped
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/smart_health
+      SPRING_DATASOURCE_USERNAME: sh_user
+      SPRING_DATASOURCE_PASSWORD: sh_pass
+      JWT_SECRET: V4JHqzO8rJ8J8u1g0tXr2bWkPaZfKkqZjK3HqC7h4A0=
+      JWT_EXPIRATION: 3600000
+    ports:
+      - "8081:8081"
+    depends_on:
+      - postgres
+
+volumes:
+  postgres_data:
