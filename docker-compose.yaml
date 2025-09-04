@@ -4,7 +4,7 @@ services:
     image: postgres:17
     environment:
       POSTGRES_USER: sh_user
-      POSTGRES_PASSWORD: sh_pass
+      POSTGRES_PASSWORD: 
       POSTGRES_DB: smart_health
     ports: ["5432:5432"]
     volumes: ["pgdata:/var/lib/postgresql/data"]
