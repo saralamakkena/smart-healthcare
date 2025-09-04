@@ -21,8 +21,8 @@ services:
     environment:
       SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/smart_health
       SPRING_DATASOURCE_USERNAME: sh_user
-      SPRING_DATASOURCE_PASSWORD: sh_pass
-      JWT_SECRET: V4JHqzO8rJ8J8u1g0tXr2bWkPaZfKkqZjK3HqC7h4A0=
+      SPRING_DATASOURCE_PASSWORD: 
+      JWT_SECRET: 
       JWT_EXPIRATION: 3600000
     ports:
       - "8081:8081"
